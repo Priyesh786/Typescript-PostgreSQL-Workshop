@@ -1,0 +1,1 @@
+3) Delete and update the product from the table and put the deteted record in the backup table using trigger
