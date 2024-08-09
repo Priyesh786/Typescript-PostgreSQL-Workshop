@@ -1,9 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CarList = void 0;
 exports.update_after_delete = update_after_delete;
 const products_1 = require("../models/products");
 const search_products_1 = require("./search_products");
+const logger_1 = __importDefault(require("../Logger/logger"));
 let car2 = new products_1.Cars(2, "Maruti", "Alto", "Diesel", 20, 5, 12000);
 let car3 = new products_1.Cars(3, "Hyundai", "Xcent", "Diesel", 22, 10, 13000);
 let car1 = new products_1.Cars(1, "Maruti", "Alto", "Petrol", 15, 20, 10000);
@@ -17,5 +21,11 @@ let car10 = new products_1.Cars(10, "Hyundai", "i20", "Diesel", 21, 20, 12000);
 let CarList = [car1, car2, car3, car4, car5, car6, car7, car8, car9, car10];
 exports.CarList = CarList;
 function update_after_delete() {
-    exports.CarList = CarList = CarList.filter(car => !search_products_1.CarToDisplay.find(displayCar => displayCar.getID() === car.getID()));
+    try {
+        exports.CarList = CarList = CarList.filter(car => !search_products_1.CarToDisplay.find(displayCar => displayCar.getID() === car.getID()));
+    }
+    catch (error) {
+        console.error(error.message);
+        logger_1.default.info(error.message);
+    }
 }

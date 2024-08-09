@@ -9,9 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "winston": "^3.14.1"
   },
   "devDependencies": {
-    "@types/node": "^22.1.0"
+    "@types/node": "^22.1.0",
+    "@types/winston": "^2.4.4"
   }
 }
